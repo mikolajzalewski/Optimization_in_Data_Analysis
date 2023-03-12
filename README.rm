@@ -1,0 +1,23 @@
+Algorytm Lasso (Least Absolute Shrinkage and Selection Operator) to technika uczenia maszynowego
+ stosowana w problemach regresji liniowej. Algorytm Lasso stosuje mechanizm regularyzacji, 
+ aby zmniejszyć przetrenowanie modelu, a jednocześnie wybrać najważniejsze cechy.
+
+Idea algorytmu polega na tym, że chcemy znaleźć wektor wag, który minimalizuje sumę kwadratów błędów, 
+ale jednocześnie sumarycznie wykorzystuje tylko niektóre cechy. W celu realizacji tej idei, algorytm 
+Lasso wprowadza pewną wartość kary (regularizacji) dla sumy wartości bezwzględnych wag cech. Parametr 
+ten określa, jak dużo wartości wag cech można pominąć, a jednocześnie jak dużo kary można nałożyć na 
+wartości niezerowe. W szczególności, dla wartości parametru kary równej zero, algorytm Lasso sprowadza
+ się do klasycznej regresji liniowej.
+
+Algorytm Lasso z użyciem koordynat spadku działa w następujący sposób:
+
+1 Inicjalizujemy wektor wag na początkowe wartości (np. wszystkie wagi ustawiamy na zero).
+2 Dla każdej wagi (dla każdej cechy) wykonujemy kroki 3-5.
+3 Wybieramy jedną wagę i traktujemy ją jako zmienną objaśniającą. Pozostałe wagi traktujemy jako stałe.
+4 Minimalizujemy błąd modelu, zmieniając wagę traktowaną jako zmienną objaśniającą. Używamy funkcji soft-thresholding,
+ która redukuje wartości wag cech do zera lub bliskiego zera, co pozwala na pominięcie nieistotnych cech.
+5 Powtarzamy kroki 3-4 dla każdej wagi. Jeśli wektor wag przestał się zmieniać (lub zmienia się poniżej zadanego progu),
+ kończymy algorytm.
+
+Algorytm Lasso z użyciem koordynat spadku jest iteracyjnym algorytmem, w którym w każdej iteracji minimalizujemy 
+błąd modelu dla jednej wagi. Dzięki temu algorytm działa efektywnie dla dużych zbiorów danych i pozwala na redukcję wymiarowości modelu poprzez pominięcie nieistotnych cech.
